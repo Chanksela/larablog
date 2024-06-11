@@ -51,9 +51,16 @@ class BlogController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Blog $blog)
     {
-        //
+
+        $blog->title = $request->title;
+        $blog->description = $request->description;
+        $blog->content = $request->content;
+        $blog->thumbnail = $request->thumbnail;
+        $blog->save();
+
+        dd($blog);
     }
 
     /**

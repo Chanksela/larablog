@@ -10,27 +10,30 @@
 
 <body>
   <main>
-    <form action="">
+    <form action="{{ route('blog.update', ['blog' => $blog->id]) }}" method="POST">
+      @csrf
+      @method('PUT')
       <div>
         <label for="title">Title</label>
         <br>
-        <input type="text" value="{{ $blog->title }}" id="title">
+        <input type="text" name="title" id="title" value="{{ $blog->title }}">
       </div>
       <div>
         <label for="description">Description</label>
         <br>
-        <input type="text" value="{{ $blog->description }}" id="description">
+        <textarea type="text" name="description" id="description">{{ $blog->description }}</textarea>
       </div>
       <div>
         <label for="content">Content</label>
         <br>
-        <input type="text" value="{{ $blog->content }}" id="content">
+        <textarea type="text" name="content" id="content">{{ $blog->content }}"</textarea>
       </div>
       <div>
         <label for="thumbnail">Thumbnail</label>
         <br>
-        <input type="text" value="{{ $blog->thumbnail }}" id="thumbnail">
+        <input type="text" name="thumbnail" id="thumbnail" value="{{ $blog->thumbnail }}">
       </div>
+      <input type="submit" name="Update Blog">
     </form>
   </main>
 </body>
