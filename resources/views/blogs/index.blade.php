@@ -17,7 +17,8 @@
           <img src="{{ $blog->thumbnail }}" alt="">
         </div>
         <h3>{{ $blog->title }}</h3>
-        <p>{{ $blog->descritpion }}</p>
+        <p>{{ $blog->description }}</p>
+
         <a href="{{ route('blog.show', ['blog' => $blog->id]) }}">Read More</a>
       </div>
     @endforeach

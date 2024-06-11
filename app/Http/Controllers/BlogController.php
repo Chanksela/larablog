@@ -21,15 +21,23 @@ class BlogController extends Controller
      */
     public function create()
     {
-        //
+        return view('blogs/create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, Blog $blog)
     {
-        //
+
+        $blog->title = $request->title;
+        $blog->description = $request->description;
+        $blog->content = $request->content;
+        $blog->thumbnail = $request->thumbnail;
+
+        $blog->save();
+        return redirect()->route('blog.index');
+
     }
 
     /**
@@ -58,9 +66,10 @@ class BlogController extends Controller
         $blog->description = $request->description;
         $blog->content = $request->content;
         $blog->thumbnail = $request->thumbnail;
+
         $blog->save();
 
-        dd($blog);
+        return back();
     }
 
     /**
