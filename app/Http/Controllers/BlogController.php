@@ -43,9 +43,9 @@ class BlogController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Blog $blog)
     {
-        //
+        return view('blogs/edit', ['blog' => $blog]);
     }
 
     /**
@@ -59,8 +59,15 @@ class BlogController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Blog $blog)
     {
-        //
+        $blog->delete();
+        return back();
+    }
+
+    public function editableList()
+    {
+        $blogs = Blog::all();
+        return view('blogs/editableList', ['blogs' => $blogs]);
     }
 }

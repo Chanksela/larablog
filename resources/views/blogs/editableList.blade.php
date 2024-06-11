@@ -10,15 +10,19 @@
 
 <body>
   <div>
-    <h1>Hello World</h1>
+    <h1>Edit List</h1>
     @foreach ($blogs as $blog)
       <div>
         <div>
           <img src="{{ $blog->thumbnail }}" alt="">
         </div>
         <h3>{{ $blog->title }}</h3>
-        <p>{{ $blog->descritpion }}</p>
-        <a href="{{ route('blog.show', ['blog' => $blog->id]) }}">Read More</a>
+        <a href="{{ route('blog.edit', ['blog' => $blog->id]) }}">Edit</a>
+        <form action="{{ route('blog.delete', ['blog' => $blog->id]) }}" method="POST">
+          @csrf
+          @method('DELETE')
+          <button>Delete</button>
+        </form>
       </div>
     @endforeach
   </div>
