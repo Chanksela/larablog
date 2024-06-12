@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class BlogController extends Controller
 {
@@ -33,7 +34,8 @@ class BlogController extends Controller
         $blog->title = $request->title;
         $blog->description = $request->description;
         $blog->content = $request->content;
-        $blog->thumbnail = $request->thumbnail;
+
+        $blog->thumbnail = $request->file('thumbnail')->store('thumbnail');
 
         $blog->save();
         return redirect()->route('blog.index');
@@ -65,7 +67,10 @@ class BlogController extends Controller
         $blog->title = $request->title;
         $blog->description = $request->description;
         $blog->content = $request->content;
-        $blog->thumbnail = $request->thumbnail;
+        Storage::delete($blog->thumbnail);
+
+
+        $blog->thumbnail = $request->file('thumbnail')->store('thumbnail');
 
         $blog->save();
 
@@ -77,6 +82,7 @@ class BlogController extends Controller
      */
     public function destroy(Blog $blog)
     {
+        Storage::delete($blog->thumbnail);
         $blog->delete();
         return back();
     }

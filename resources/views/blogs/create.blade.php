@@ -10,7 +10,7 @@
 
 <body>
   <main>
-    <form action="{{ route('blog.store') }}" method="POST">
+    <form action="{{ route('blog.store') }}" method="POST" enctype="multipart/form-data">
       @csrf
       <div>
         <label for="title">Title</label>
@@ -30,7 +30,7 @@
       <div>
         <label for="thumbnail">Thumbnail</label>
         <br>
-        <input type="text" name="thumbnail" id="thumbnail">
+        <input type="file" name="thumbnail" id="thumbnail">
       </div>
       <input type="submit" name="Create Blog">
     </form>

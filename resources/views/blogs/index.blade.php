@@ -14,7 +14,7 @@
     @foreach ($blogs as $blog)
       <div>
         <div>
-          <img src="{{ $blog->thumbnail }}" alt="">
+          <img src="{{ asset('storage/' . $blog->thumbnail) }}" alt="" width="200">
         </div>
         <h3>{{ $blog->title }}</h3>
         <p>{{ $blog->description }}</p>

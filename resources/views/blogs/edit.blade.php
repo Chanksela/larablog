@@ -10,7 +10,7 @@
 
 <body>
   <main>
-    <form action="{{ route('blog.update', ['blog' => $blog->id]) }}" method="POST">
+    <form action="{{ route('blog.update', ['blog' => $blog->id]) }}" method="POST" enctype="multipart/form-data">
       @csrf
       @method('PUT')
       <div>
@@ -31,7 +31,7 @@
       <div>
         <label for="thumbnail">Thumbnail</label>
         <br>
-        <input type="text" name="thumbnail" id="thumbnail" value="{{ $blog->thumbnail }}">
+        <input type="file" name="thumbnail" id="thumbnail">
       </div>
       <input type="submit" name="Update Blog">
     </form>
