@@ -8,11 +8,9 @@
             </div>
             <div class="hidden md:block">
               <div class="ml-10 flex items-baseline space-x-4">
-                <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                <x-nav-link href="/">Home</x-nav-link>
-                <x-nav-link href="/blogs/create">Add Blog</x-nav-link>
-                <x-nav-link href="/blogs/list">All Blogs</x-nav-link>
-
+                <x-nav-link href="/" :active="request()->is('blogs')">Home</x-nav-link>
+                <x-nav-link href="/blogs/create" :active="request()->is('blogs/create')">Add Blog</x-nav-link>
+                <x-nav-link href="/blogs/list" :active="request()->is('blogs/list')">All Blogs</x-nav-link>
               </div>
             </div>
           </div>
