@@ -34,7 +34,6 @@ class BlogController extends Controller
         $blog->title = $request->title;
         $blog->description = $request->description;
         $blog->content = $request->content;
-
         $blog->thumbnail = $request->file('thumbnail')->store('thumbnail');
 
         $blog->save();
