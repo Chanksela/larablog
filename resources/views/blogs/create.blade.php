@@ -23,4 +23,6 @@
     </div>
     <input type="submit" name="Create Blog">
   </form>
+
+
 </x-layout>
